@@ -62,5 +62,6 @@ namespace Task_Junior.Migrations
             migrationBuilder.DropTable(
                 name: "Categories");
         }
+        
     }
 }

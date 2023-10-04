@@ -37,6 +37,23 @@ namespace Task_Junior.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Name = "electroinc"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Name = "clothes"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Name = "Shoes"
+                        });
                 });
 
             modelBuilder.Entity("Task_Junior.Models.Product", b =>
@@ -76,7 +93,7 @@ namespace Task_Junior.Migrations
             modelBuilder.Entity("Task_Junior.Models.Product", b =>
                 {
                     b.HasOne("Task_Junior.Models.Category", "Category")
-                        .WithMany("Courses")
+                        .WithMany("Products")
                         .HasForeignKey("Categ_Id");
 
                     b.Navigation("Category");
@@ -84,7 +101,7 @@ namespace Task_Junior.Migrations
 
             modelBuilder.Entity("Task_Junior.Models.Category", b =>
                 {
-                    b.Navigation("Courses");
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

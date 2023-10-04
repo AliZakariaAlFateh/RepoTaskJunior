@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Task_Junior.Models;
+using Task_Junior.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,8 @@ builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("TaskJuniorConnection"));
 });
+builder.Services.AddScoped<IRepostory<Product>,Repostory<Product>>();
+builder.Services.AddScoped<IProduct,ProductRepo >();
 
 var app = builder.Build();
 
