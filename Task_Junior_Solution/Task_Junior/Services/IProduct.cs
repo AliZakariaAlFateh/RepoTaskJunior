@@ -8,6 +8,7 @@ namespace Task_Junior.Services
         List<Product> GetAllProductByGategoryID(int Id);
 
         Product GetProductByID(int ProductID);
+        string UploadFile(IFormFile image);
 
     }
 }

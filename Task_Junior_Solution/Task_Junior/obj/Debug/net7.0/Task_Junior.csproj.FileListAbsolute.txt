@@ -251,3 +251,9 @@ E:\Task_Junior_Test\RepoTaskJunior\Task_Junior_Solution\Task_Junior\bin\Debug\ne
 E:\Task_Junior_Test\RepoTaskJunior\Task_Junior_Solution\Task_Junior\bin\Debug\net7.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 E:\Task_Junior_Test\RepoTaskJunior\Task_Junior_Solution\Task_Junior\bin\Debug\net7.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 E:\Task_Junior_Test\RepoTaskJunior\Task_Junior_Solution\Task_Junior\bin\Debug\net7.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Task_Junior_Test\RepoTaskJunior\Task_Junior_Solution\Task_Junior\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+E:\Task_Junior_Test\RepoTaskJunior\Task_Junior_Solution\Task_Junior\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+E:\Task_Junior_Test\RepoTaskJunior\Task_Junior_Solution\Task_Junior\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+E:\Task_Junior_Test\RepoTaskJunior\Task_Junior_Solution\Task_Junior\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
+E:\Task_Junior_Test\RepoTaskJunior\Task_Junior_Solution\Task_Junior\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
+E:\Task_Junior_Test\RepoTaskJunior\Task_Junior_Solution\Task_Junior\bin\Debug\net7.0\Microsoft.Extensions.Options.dll

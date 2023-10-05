@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Task_Junior.Models;
@@ -16,6 +17,12 @@ builder.Services.AddScoped<IRepostory<Product>,Repostory<Product>>();
 builder.Services.AddScoped<IProduct,ProductRepo>();
 builder.Services.AddIdentity<IdentityUser,IdentityRole>()
     .AddEntityFrameworkStores<DataContext>();
+builder.Services.AddAuthorization(options =>
+{
+    options.DefaultPolicy = new AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser()
+        .Build();
+});
 
 var app = builder.Build();
 
@@ -31,11 +38,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthorization();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Product}/{action=Index}/{id?}");
 
 app.Run();

@@ -32,12 +32,20 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="Index.html">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">about_us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">ContactUs</a>
-                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="ShowProductsForClients" asp-controller="Product">Products</a>
+                            </li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-action="Index" asp-controller="Product">All Product</a>
+                                </li>
+                            }
+
+                        }
+                       
                     </ul>
                     <a href="Order_payment.html?UserId=1">
                         <i class="fa-solid fa-cart-shopping AddCart">
@@ -48,10 +56,16 @@
 
                     <!-- <input class="form-control me-2 d-md-block d-sm-none" type="search" placeholder="Search" aria-label="Search">
                       <button class="btn btn-outline-success d-md-block d-sm-none" type="submit">Search</button> -->
-
-                    <a class="navbar-brand btn btn-primary Login" href="Index.html" id="LgOut_Button" onclick="LogOut()">LogOut</a>
-                    <a class="navbar-brand btn btn-primary Login" href="loginPage.html" id="Login_Button">Login</a>
-                    <a class="navbar-brand btn btn-primary Register" href="RegisterPage.html" id="Register_Button">Register</a>
+                    
+                   @if (!User.Identity.IsAuthenticated)
+                    {
+                       <a class="navbar-brand btn btn-primary Login" asp-action="Login" asp-controller="Account">Login</a>
+                        <a class="navbar-brand btn btn-primary Register" asp-action="Register" asp-controller="Account" >Register</a>
+                    }
+                    else
+                    {   <li>Wlcome @User.Identity.Name</li>
+                        <a class="navbar-brand btn btn-primary Login" asp-action="LogOut" asp-controller="Account" >LogOut</a>
+                    }
                 </div>
             </div>
         </nav>

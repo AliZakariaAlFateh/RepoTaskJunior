@@ -7,9 +7,12 @@ namespace Task_Junior.Services
     {
         private readonly DataContext db;
 
-        public ProductRepo(DataContext _db):base(_db)
+        public IWebHostEnvironment WebHost { get; }
+
+        public ProductRepo(DataContext _db,IWebHostEnvironment webHost):base(_db)
         {
             db = _db;
+            WebHost = webHost;
         }
         public List<Product> GetAllProductByGategoryID(int id)
         {
@@ -40,6 +43,20 @@ namespace Task_Junior.Services
 
         }
 
-        
+        public string UploadFile(IFormFile image)
+        {
+
+            string uploadsFolder = Path.Combine(WebHost.WebRootPath, "Images");
+            string ImageName = Guid.NewGuid().ToString() + "_" + image.FileName;
+            string filePath = Path.Combine(uploadsFolder, ImageName);
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                image.CopyTo(fileStream);
+            }
+            return ImageName;
+
+        }
+
+
     }
 }
