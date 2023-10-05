@@ -1,4 +1,5 @@
-﻿using Task_Junior.Models;
+﻿using Microsoft.CodeAnalysis;
+using Task_Junior.Models;
 
 namespace Task_Junior.Services
 {
@@ -21,8 +22,24 @@ namespace Task_Junior.Services
             var query = db.Categories.ToList();
             return  query;
         }
-        public Category GetCategoryName(int ProductId) {
+        public Category GetCategoryName(int ProductId)
+        {
             return db.Categories.Find(ProductId);
         }
+
+         public Product GetProductByID(int ProductID)
+        {
+            Product Prod= db.Products.Find(ProductID);
+            if (Prod != null)
+            {
+                DateTime EndDate = Prod.StartDate.AddDays(Prod.Duration_EndDate);
+                if (Prod.StartDate <= DateTime.Now && EndDate >= DateTime.Now)
+                     return Prod;
+            }
+            return null;
+
+        }
+
+        
     }
 }

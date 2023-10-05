@@ -12,8 +12,8 @@ using Task_Junior.Models;
 namespace Task_Junior.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231005055431_ChangeColumnDuration")]
-    partial class ChangeColumnDuration
+    [Migration("20231005103146_newMigrate")]
+    partial class newMigrate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,8 +73,8 @@ namespace Task_Junior.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("Duration")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("Duration_EndDate")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()

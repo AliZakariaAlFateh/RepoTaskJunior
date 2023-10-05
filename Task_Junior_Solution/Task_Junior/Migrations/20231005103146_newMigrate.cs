@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Task_Junior.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class newMigrate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,7 +35,7 @@ namespace Task_Junior.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MyProperty = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Duration_EndDate = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
                     Categ_Id = table.Column<int>(type: "int", nullable: true)
                 },
@@ -45,6 +47,16 @@ namespace Task_Junior.Migrations
                         column: x => x.Categ_Id,
                         principalTable: "Categories",
                         principalColumn: "ID");
+                });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "ID", "Name" },
+                values: new object[,]
+                {
+                    { 1, "electroinc" },
+                    { 2, "clothes" },
+                    { 3, "Shoes" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -62,6 +74,5 @@ namespace Task_Junior.Migrations
             migrationBuilder.DropTable(
                 name: "Categories");
         }
-        
     }
 }

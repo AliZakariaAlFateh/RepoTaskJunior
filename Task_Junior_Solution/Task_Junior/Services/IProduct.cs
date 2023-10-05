@@ -7,5 +7,7 @@ namespace Task_Junior.Services
         List<Category> GetAllcategories();
         List<Product> GetAllProductByGategoryID(int Id);
 
+        Product GetProductByID(int ProductID);
+
     }
 }

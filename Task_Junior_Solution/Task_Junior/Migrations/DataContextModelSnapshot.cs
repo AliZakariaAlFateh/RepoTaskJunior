@@ -70,8 +70,8 @@ namespace Task_Junior.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("Duration_EndDate")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("Duration_EndDate")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()

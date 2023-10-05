@@ -12,10 +12,11 @@ namespace Task_Junior.Models
 
         public DateTime CreationDate { get; set; }
         // public int UserID { get; set; }
-        [DataType(DataType.Date)]
-        public DateTime StartDate { get; set; }
         [DataType(DataType.DateTime)]
-        public DateTime Duration_EndDate { get; set; }
+        public DateTime StartDate { get; set; }
+        //[DataType(DataType.DateTime)]
+        [Display(Name="Duration")]
+        public int Duration_EndDate { get; set; }
         public double Price { get; set; }
         [ForeignKey("Category")]
         public int? Categ_Id { get; set; }

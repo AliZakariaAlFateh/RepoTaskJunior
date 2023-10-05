@@ -2,15 +2,14 @@
 using NuGet.Protocol.Core.Types;
 using Task_Junior.Models;
 using Task_Junior.Services;
+using Task_Junior.ViewModel;
 
 namespace Task_Junior.Controllers
 {
     public class ProductController : Controller
     {
         IRepostory<Product> repostory;
-
-        public IProduct Product { get; }
-
+        private IProduct Product { get; }
         public ProductController(IRepostory<Product> _repostory,IProduct product)
         {
             this.repostory = _repostory;
@@ -101,6 +100,31 @@ namespace Task_Junior.Controllers
         }
 
 
+        [HttpGet]
+        public IActionResult ShowProductsForClients() 
+        {
+            var DataMProductList = repostory.GetAll();
+            if (DataMProductList != null)
+            {
+                List<ViewModeProductsAsCards> viewMProductList = new List<ViewModeProductsAsCards>();
+                foreach (var item in DataMProductList)
+                {
+                    Product prodExpect = Product.GetProductByID(item.Id);
+                    if (prodExpect != null)
+                    {
+                        viewMProductList.Add(new ViewModeProductsAsCards()
+                        {
+                            ProductName = prodExpect.Name,
+                            ProductPrice = prodExpect.Price
+                        });
+                    }
+                }
+                //ViewModeProductsAsCards
+                return View(viewMProductList);
+            }
+            return View(new List<ViewModeProductsAsCards>());
+
+        }
 
 
     }

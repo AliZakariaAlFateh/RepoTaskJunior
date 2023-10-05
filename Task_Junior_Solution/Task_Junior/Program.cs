@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Task_Junior.Models;
 using Task_Junior.Services;
@@ -12,7 +13,9 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("TaskJuniorConnection"));
 });
 builder.Services.AddScoped<IRepostory<Product>,Repostory<Product>>();
-builder.Services.AddScoped<IProduct,ProductRepo >();
+builder.Services.AddScoped<IProduct,ProductRepo>();
+builder.Services.AddIdentity<IdentityUser,IdentityRole>()
+    .AddEntityFrameworkStores<DataContext>();
 
 var app = builder.Build();
 
