@@ -2,14 +2,34 @@
 
 @{
     ViewData["Title"] = "Index";
+    SelectList selectLists = new SelectList(ViewBag.Cat, "ID", "Name");
 }
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<container>
+    <div class="row">
+        <div class="col-4">
+            <p>
+                <a asp-action="Create" class="btn btn-primary">Create New</a>
+            </p>
+        </div>
+        <div class="col-3"><h4>Filter By Category</h4></div>
+        <div class="col-5">
+                <form method="post" asp-action="search">
+                 <div class="row">
+                        <div class="col-8 form-group">
+                            <label class="control-label"></label>
+                            <select name="ID" value="ID" class="form-control" asp-items="selectLists"></select>
+                        </div>
+                    <div class="col-4 form-group"><input type="submit" value="Search" class="btn btn-primary"></div>
+                 </div>
+                </form>
+        </div>
+    </div>
+
+</container>
+<table class="table table-striped">
     <thead>
         <tr>
             <th>
@@ -22,7 +42,7 @@
                 @Html.DisplayNameFor(model => model.StartDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MyProperty)
+                @Html.DisplayNameFor(model => model.Duration_EndDate)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Price)
@@ -46,18 +66,18 @@
                 @Html.DisplayFor(modelItem => item.StartDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MyProperty)
+                    @Html.DisplayFor(modelItem => item.Duration_EndDate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Category.ID)
+                @Html.DisplayFor(modelItem => item.Category.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
             </td>
         </tr>
 }

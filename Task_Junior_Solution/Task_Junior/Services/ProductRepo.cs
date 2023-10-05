@@ -10,7 +10,13 @@ namespace Task_Junior.Services
         {
             db = _db;
         }
+        public List<Product> GetAllProductByGategoryID(int id)
+        {
+            var query = db.Products.Where(c=>c.Categ_Id==id).ToList();
+            return query;
+        }
         public List<Category> GetAllcategories()
+        
         {
             var query = db.Categories.ToList();
             return  query;

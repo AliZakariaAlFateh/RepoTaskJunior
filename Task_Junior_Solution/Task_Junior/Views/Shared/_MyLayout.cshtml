@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewData["Title"] = "_MyLayout";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Task_Junior</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Task_Junior.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg sticky-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="Index.html">
+                    <img src="Images/LogoECom2.PNG" alt="Logo" srcset="" width="40px" height="40px" class="Logo">
+                </a>
+                <!-- Now we have user id zero and two only-->
+                <a class="navbar-brand" href="EditProfile.html?UserId=0" id="Is_Logined_Id"></a>
+                <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                        aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav me-auto my-2 my-lg-0" style="--bs-scroll-height: 100px;" id="MoveSections">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="Index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">about_us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">ContactUs</a>
+                        </li>
+                    </ul>
+                    <a href="Order_payment.html?UserId=1">
+                        <i class="fa-solid fa-cart-shopping AddCart">
+                            <span id="ProductsCounter"></span>
+                        </i>
+
+                    </a>
+
+                    <!-- <input class="form-control me-2 d-md-block d-sm-none" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-success d-md-block d-sm-none" type="submit">Search</button> -->
+
+                    <a class="navbar-brand btn btn-primary Login" href="Index.html" id="LgOut_Button" onclick="LogOut()">LogOut</a>
+                    <a class="navbar-brand btn btn-primary Login" href="loginPage.html" id="Login_Button">Login</a>
+                    <a class="navbar-brand btn btn-primary Register" href="RegisterPage.html" id="Register_Button">Register</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - Task_Junior - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
