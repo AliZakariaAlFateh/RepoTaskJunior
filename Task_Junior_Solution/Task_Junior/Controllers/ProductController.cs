@@ -29,12 +29,9 @@ namespace Task_Junior.Controllers
             return View("Index",Product.GetAllProductByGategoryID(ID));
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")] 
         public IActionResult Index()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var username= userManager.FindByIdAsync(userId).Result;
-           
             ViewBag.Cat = Product.GetAllcategories();
             return View(repostory.GetAll());
         }
@@ -52,12 +49,15 @@ namespace Task_Junior.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Create(Product Newproduct,IFormFile ImageFile)
         {
-            if(ModelState.IsValid)
+            if (ImageFile == null)
+            {
+                ModelState.AddModelError("ImageFile", "Please select Image");
+            }
+            if (ModelState.IsValid)
             {
                 try
                 {
                   string ImageName=Product.UploadFile(ImageFile);
-                    //var user = userManager.FindByIdAsync(User.Identity.Name);
                     var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                     Newproduct.Image = ImageName;
                     Newproduct.UserID = userId;
@@ -90,6 +90,11 @@ namespace Task_Junior.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Edit(int id, Product ProduEdit,IFormFile ImageFile)
         {
+            if (ImageFile == null)
+            {
+                ModelState.AddModelError("ImageFile", "Please select Image");
+            }
+            
             if (ModelState.IsValid)
             {
                 string ImageName = Product.UploadFile(ImageFile);
@@ -150,7 +155,8 @@ namespace Task_Junior.Controllers
                         {
                             Id = item.Id,
                             ProductName = prodExpect.Name,
-                            ProductPrice = prodExpect.Price
+                            ProductPrice = prodExpect.Price,
+                            Image = prodExpect.Image
                         });
                     }
                 }

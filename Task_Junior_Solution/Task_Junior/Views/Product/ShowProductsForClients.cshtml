@@ -8,33 +8,40 @@
 @{
     ViewData["Title"] = "ShowProducts";
 }
+<div>
+    <h4>All Products</h4>
+    <hr />
 
-<div class="container">
-    <div class="row">
+    <div class="container mt-5 p-3 rounded cart">
+        <div class="right-side-pro-detail border p-3 m-0">
+            <div class="row">
+                    <div class="container">
+                        <div class="row">
 
-        @foreach (var item in Model)
-        {
+                            @foreach (var item in Model)
+                            {
 
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <div class="card-body">
-                        <img src="/Images/@item.Image" width="150" height="150">
+                                <div class="card" style="width: 18rem;">
+                                    <div class="card-body">
+                                        <div class="card-body">
+                                            <img src="/Images/@item.Image" width="150" height="150">
+                                        </div>
+                                        <h5 class="card-title">@item.ProductName</h5>
+                                        <p class="card-text">@item.ProductPrice</p>
+
+                                        <a asp-action="Details" asp-controller="Product" asp-route-id="@item.Id"  class="btn btn-primary">Details</a>
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
                     </div>
-                    <h5 class="card-title">@item.ProductName</h5>
-                    <p class="card-text">@item.ProductPrice</p>
-
-                    <a asp-action="Details" asp-controller="Product" asp-route-id="@item.Id"  class="btn btn-primary">Details</a>
-                </div>
-            </div>
-
-        }
+           </div>
     </div>
-    @if(User.IsInRole("Admin"))
-    {
-        <a asp-action="Index" asp-controller="Product">
-            back to list
-        </a>
-    }
-   
-
 </div>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-action="Index" class="col-4 btn btn-warning w-40">Back To List</a>
+    }
+</div>
+
