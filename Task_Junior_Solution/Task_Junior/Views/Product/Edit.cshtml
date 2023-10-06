@@ -21,16 +21,16 @@
             </div>
             <div class="form-group">
                 <label asp-for="CreationDate" class="control-label"></label>
-                <input asp-for="CreationDate" class="form-control" />
+                <input asp-for="CreationDate" class="form-control DiasbledOldDate" />
                 <span asp-validation-for="CreationDate" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <input name="ImageFile" type="file" />
+                <input name="ImageFile" type="file" required/>
             </div>
             <div class="form-group">
                 <label asp-for="StartDate" class="control-label"></label>
-                <input asp-for="StartDate" class="form-control" />
+                <input asp-for="StartDate" class="form-control DiasbledOldDate" />
                 <span asp-validation-for="StartDate" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -58,7 +58,7 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
+<script src="~/js/disabledolddatewhileinserted.js"></script>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

@@ -128,6 +128,7 @@ namespace Task_Junior.Controllers
         [Authorize]
         public IActionResult Details(int id)
         {
+            
             return View(repostory.GetByID(id));
         }
 

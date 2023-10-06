@@ -13,13 +13,19 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Task_Junior.styles.css" asp-append-version="true" />
+    <style>
+
+        #LOGO{
+            border-radius:40%;
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg sticky-top bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="Index.html">
-                    <img src="Images/LogoECom2.PNG" alt="Logo" srcset="" width="40px" height="40px" class="Logo">
+                    <img src="~/images/exceed2.png" alt="Logo" srcset="" width="50px" height="50px" class="Logo" id="LOGO">
                 </a>
                 <!-- Now we have user id zero and two only-->
                 <a class="navbar-brand" href="EditProfile.html?UserId=0" id="Is_Logined_Id"></a>
@@ -30,7 +36,7 @@
                 <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav me-auto my-2 my-lg-0" style="--bs-scroll-height: 100px;" id="MoveSections">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="Index.html">Home</a>
+                            <a class="nav-link active" aria-current="page" href="/Home">Home</a>
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
